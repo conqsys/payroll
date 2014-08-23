@@ -8,78 +8,78 @@ Ext.onReady(function () {
 
 var movementHeaderID = 0;
 
-function checkMovementHeaderCountSuccessTest(a, e) {
-    Ext.MessageBox.wait('loading...');
-    document.getElementById('daycontent').style.display = ""
-    App.reportsPanel.hide();
-    App.lblCash.setText(null);
-    App.txtNotes.setValue(null);
-    App.lblBeginTime.setText(null);
+		function checkMovementHeaderCountSuccessTest(a, e) {
+   		 Ext.MessageBox.wait('loading...');
+		    document.getElementById('daycontent').style.display = ""
+			    App.reportsPanel.hide();
+				    App.lblCash.setText(null);
+				    App.txtNotes.setValue(null);
+					    App.lblBeginTime.setText(null);
     App.lblEndTime.setText(null); 
     App.lblBatchNo.setText(null);
     document.getElementById('timeDiv').style.display = 'none';
     document.getElementById('manualShiftEntry').style.display = 'none';
     //$(timeDiv).hide();
    
-    if (e.total == 1) {
-        App.btnAddMop.setDisabled(false);
-        App.btnVendorPayout.setDisabled(false);
-        App.btnAddPayIn.setDisabled(false);
-        App.btnSplit.setDisabled(false);
-        App.windowMovementHeaderDetail.show();
-        Ext.MessageBox.hide();
-        isNewDayRecon = true;
-        App.btnShowMovementHeaderDetailWindow.fireEvent('click');
-    }
+			    if (e.total == 1) {
+				App.btnAddMop.setDisabled(false);
+				App.btnVendorPayout.setDisabled(false);
+				App.btnAddPayIn.setDisabled(false);
+				App.btnSplit.setDisabled(false);
+				App.windowMovementHeaderDetail.show();
+				Ext.MessageBox.hide();
+				isNewDayRecon = true;
+				App.btnShowMovementHeaderDetailWindow.fireEvent('click');
+			    }
         // if record is equal to one 
-    else if (e.total == 2) {
-       // $(timeDiv).show();
-        document.getElementById('timeDiv').style.display = 'block';
-        App.lblBeginTime.setText(e.data.OpeningTime);
-        App.lblEndTime.setText(e.data.ClosingTime);
-        App.lblMovementHeaderID.setText(e.data.MovementHeaderID);
-        App.lblBatchNo.setText(e.data.SecondaryReportPeriod);
-        movementHeaderID = e.data.MovementHeaderID;
-        App.btnAddMop.setDisabled(false);
-        App.btnVendorPayout.setDisabled(false);
-        App.btnAddPayIn.setDisabled(false);
-        App.btnSplit.setDisabled(false);
-        //refreshDayReconDataSet();
-        isAmountRefresh = false;  //to set the variable to refresh every times
-        loadAllStoreData();
-    }
-        // if record not found
-    else if (e.total == 0) {
-        App.lblMovementHeaderID.setText(' ');
-        Ext.MessageBox.hide();
-        mopTotalAmount = 0;
-        App.lblMopTotalAmount.setText('$' + mopTotalAmount.toFixed(2));
-        App.lblMopSalesTotalAmount.setText('$' + mopTotalAmount.toFixed(2));
+				    else if (e.total == 2) {
+				       // $(timeDiv).show();
+					document.getElementById('timeDiv').style.display = 'block';
+					App.lblBeginTime.setText(e.data.OpeningTime);
+					App.lblEndTime.setText(e.data.ClosingTime);
+					App.lblMovementHeaderID.setText(e.data.MovementHeaderID);
+					App.lblBatchNo.setText(e.data.SecondaryReportPeriod);
+					movementHeaderID = e.data.MovementHeaderID;
+					App.btnAddMop.setDisabled(false);
+					App.btnVendorPayout.setDisabled(false);
+					App.btnAddPayIn.setDisabled(false);
+					App.btnSplit.setDisabled(false);
+					//refreshDayReconDataSet();
+					isAmountRefresh = false;  //to set the variable to refresh every times
+					loadAllStoreData();
+				    }
+					// if record not found
+				    else if (e.total == 0) {
+					App.lblMovementHeaderID.setText(' ');
+					Ext.MessageBox.hide();
+					mopTotalAmount = 0;
+					App.lblMopTotalAmount.setText('$' + mopTotalAmount.toFixed(2));
+					App.lblMopSalesTotalAmount.setText('$' + mopTotalAmount.toFixed(2));
 
-        gasGradeTotalAmount = 0;
-        App.lblGasGradeTotalAmount.setText('$' + gasGradeTotalAmount.toFixed(2));
+					gasGradeTotalAmount = 0;
+					App.lblGasGradeTotalAmount.setText('$' + gasGradeTotalAmount.toFixed(2));
 
-        gasGradeVolume = 0;
-        App.lblGasGradeVolume.setText(gasGradeVolume.toFixed(2));
+					gasGradeVolume = 0;
+					App.lblGasGradeVolume.setText(gasGradeVolume.toFixed(2));
 
-        totalSalesAmount = 0;
-        App.lblTotSalesAmount.setText('$' + totalSalesAmount.toFixed(2));
-        //App.lblGrandSales.setText('$' + totalSalesAmount.toFixed(2));
-        App.lblTotalSales.setText('$' + totalSalesAmount.toFixed(2));
+					totalSalesAmount = 0;
+					App.lblTotSalesAmount.setText('$' + totalSalesAmount.toFixed(2));
+					//App.lblGrandSales.setText('$' + totalSalesAmount.toFixed(2));
+					App.lblTotalSales.setText('$' + totalSalesAmount.toFixed(2));
 
-        shortOver = 0;
-        App.lblShortOverGreen.setText('$' + shortOver.toFixed(2));
-        App.lblShortOverRed.setText('$' + shortOver.toFixed(2));
+					shortOver = 0;
+					App.lblShortOverGreen.setText('$' + shortOver.toFixed(2));
+					App.lblShortOverRed.setText('$' + shortOver.toFixed(2));
 
-        totalReceipts = 0;
-        App.lblTotalReceiptsRed.setText('$' + totalReceipts.toFixed(2));
-        App.lblTotalReceiptsGreen.setText('$' + totalReceipts.toFixed(2));
+					totalReceipts = 0;
+					App.lblTotalReceiptsRed.setText('$' + totalReceipts.toFixed(2));
+					App.lblTotalReceiptsGreen.setText('$' + totalReceipts.toFixed(2));
 
-        mopTotalReconAmount = 0;
-        App.lblDayReconTotalAmount.setText('$' + mopTotalReconAmount.toFixed(2));
+					mopTotalReconAmount = 0;
+					App.lblDayReconTotalAmount.setText('$' + mopTotalReconAmount.toFixed(2));
 
-        totalExpenses = 0;
-        App.lblTotalExpenses.setText('$' + totalExpenses.toFixed(2));
+					totalExpenses = 0;
+					App.lblTotalExpenses.setText('$' + totalExpenses.toFixed(2));
 
         //   App.dsGasGradeData.reload();
         //loadAllStoreData();
